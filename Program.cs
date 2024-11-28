@@ -1,7 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.Text.RegularExpressions;
-using System.Xml.Serialization;
-
+﻿
 class SimpleOperation
 {
 
@@ -47,7 +44,7 @@ class SimpleOperation
 
     public static void Addition()
     {
-        var (operand1, operand2) = TakeInput();
+        (double operand1, double operand2) = TakeInput();
         Console.WriteLine($"The sum of {operand1} and {operand2} is {operand1 + operand2}");
 
     }
@@ -434,16 +431,11 @@ class MainProgram
                     return;
 
                 default:
+                Console.Clear();
                     Console.WriteLine("Invalid option.");
                     break;
-
-
-
             }
 
-
         }
-
-
     }
 }
