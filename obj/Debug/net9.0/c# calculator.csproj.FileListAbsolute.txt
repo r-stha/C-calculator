@@ -12,3 +12,4 @@ C:\Users\97798\Documents\c# calculator\obj\Debug\net9.0\refint\c# calculator.dll
 C:\Users\97798\Documents\c# calculator\obj\Debug\net9.0\c# calculator.pdb
 C:\Users\97798\Documents\c# calculator\obj\Debug\net9.0\c# calculator.genruntimeconfig.cache
 C:\Users\97798\Documents\c# calculator\obj\Debug\net9.0\ref\c# calculator.dll
+C:\Users\97798\Documents\c# calculator\obj\Debug\net9.0\c# calculator.sourcelink.json
