@@ -1,5 +1,15 @@
 ﻿class Menu
 {
+    public static void MainMenu()
+    {
+        Console.WriteLine("Select an operation:");
+        Console.WriteLine("1. Basic Operations");
+        Console.WriteLine("2. Scientific Calculations");
+        Console.WriteLine("3. Number System Conversion");
+        Console.WriteLine("4. Exit");
+    }
+
+
     public static void ArthmeticCalculationMenu()
     {
         Console.WriteLine(@"1. Addition
@@ -32,6 +42,14 @@
         Console.WriteLine("1. sin(x)");
         Console.WriteLine("2. cos(x)");
         Console.WriteLine("3. tan(x)");
+
+    }
+
+    public static void NumberSystemMenu()
+    {
+        Console.Clear();
+        Console.WriteLine(@"1. Binary to decimal
+2. Decimal to binary");
 
     }
 
@@ -98,6 +116,44 @@ class Input : Menu
         }
 
     }
+
+    public static int TakeBinaryInput()
+    {
+        Console.WriteLine("Enter the value to convert to decimal");
+
+        while (true)
+        {
+            string? binary = Console.ReadLine();
+
+            foreach (char number in binary)
+            {
+                if (number != '0' && number != '1')
+                {
+                    Console.Clear();
+                    Console.WriteLine("ERROR : Not a binary Number");
+                    Console.WriteLine("Enter valid Binary Number:");
+
+
+                }
+                else
+                {
+
+                    return Convert.ToInt32(binary);
+                }
+
+            }
+
+        }
+
+    }
+
+    public static int TakeDecimalInput()
+    {
+        Console.WriteLine("Enter the decimal value to convert to binary");
+        return Convert.ToInt32(Console.ReadLine());
+    }
+
+
 
 }
 
@@ -317,20 +373,79 @@ The permutation result is {permutationResult}");
 }
 
 
+class NumberSystemConversion
+{
+    public static void BinaryToDecimal()
+    {
+        int binary = Input.TakeBinaryInput();
+        int result = BinaryToDecimalLogic(binary);
+
+        Console.WriteLine($"{binary} to decimal value is {result}");
+
+        Console.WriteLine("Press any key to continue....");
+        Console.ReadKey();
+        Console.Clear();
+
+    }
+
+    private static int BinaryToDecimalLogic(int binary)
+    {
+        int sum = 0;
+        int power = 1;
+        int remainder;
+
+        while (binary != 0)
+        {
+            remainder = binary % 10;
+            sum += remainder * power;
+            binary /= 10;
+            power *= 2;
+        }
+        return sum;
+    }
+
+    public static void DecimalToBinary()
+    {
+        int decimalNumber = Input.TakeDecimalInput();
+        int result = DecimalToBinaryLogic(decimalNumber);
+
+        Console.WriteLine($"{decimalNumber} to Binary is {result}");
+        Console.WriteLine("Press any key to continue....");
+        Console.ReadKey();
+        Console.Clear();
+
+    }
+
+    private static int DecimalToBinaryLogic(int decimalNumber)
+    {
+        int binaryValue = 0;
+        int remainder = 0;
+        int placeValue = 1;
+
+        while (decimalNumber != 0)
+        {
+            remainder = decimalNumber % 2;
+            binaryValue += remainder * placeValue;
+            placeValue *= 10;
+            decimalNumber /= 2;
+        }
+
+        return binaryValue;
+
+    }
+
+}
+
+
 class MainProgram
 {
     public static void Main()
     {
         while (true)
         {
-            Console.WriteLine("Select an operation:");
-            Console.WriteLine("1. Basic Operations");
-            Console.WriteLine("2. Scientific Calculations");
-            Console.WriteLine("3. Exit");
+            Input.MainMenu();
 
             double userchoice = Input.GetValidInput();
-
-
             switch (userchoice)
             {
                 case 1:
@@ -433,7 +548,28 @@ class MainProgram
 
                     }
                     break;
+
                 case 3:
+                    Input.NumberSystemMenu();
+
+                    double userChoice = Input.GetValidInput();
+
+                    if (userChoice == 1)
+                    {
+                        Console.Clear();
+                        NumberSystemConversion.BinaryToDecimal();
+                    }
+                    else if (userChoice == 2)
+                    {
+                        Console.Clear();
+                        NumberSystemConversion.DecimalToBinary();
+                    }
+
+
+                    break;
+
+
+                case 4:
                     return;
 
                 default:
@@ -445,3 +581,4 @@ class MainProgram
         }
     }
 }
+
