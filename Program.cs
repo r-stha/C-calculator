@@ -1,8 +1,6 @@
-﻿
-class SimpleOperation
+﻿class Menu
 {
-
-    public static void Menu()
+    public static void ArthmeticCalculationMenu()
     {
         Console.WriteLine(@"1. Addition
 2. Subtraction
@@ -13,8 +11,37 @@ class SimpleOperation
 7. Exit");
     }
 
+    public static void ScientificMenu()
+    {
+        Console.WriteLine(@$"1. Trigonometric Functions
+2. Find combination and permutation
+3. Find the solution of Quadratic equation");
+    }
 
-    public static double ValidInput()
+
+    public static void DegreeOrRadianMenu()
+    {
+        Console.WriteLine("Do you want x in degree or radian:");
+        Console.WriteLine(@"1. Degree
+2. Radian");
+    }
+
+
+    public static void TrigonometricMenu()
+    {
+        Console.WriteLine("1. sin(x)");
+        Console.WriteLine("2. cos(x)");
+        Console.WriteLine("3. tan(x)");
+
+    }
+
+}
+
+
+
+class Input : Menu
+{
+    public static double GetValidInput()
     {
         while (true)
         {
@@ -32,38 +59,74 @@ class SimpleOperation
         }
     }
 
-    public static (double, double) TakeInput()
+    public static (double, double) TakeArthmeticInput()
     {
         Console.WriteLine("Enter your first operand:");
-        double operand1 = ValidInput();
+        double operand1 = GetValidInput();
         Console.WriteLine("Enter your Second operand");
-        double operand2 = ValidInput();
+        double operand2 = GetValidInput();
 
         return (operand1, operand2);
     }
 
+
+    public static double TakeTrigonometricinput()
+    {
+
+        DegreeOrRadianMenu();
+        int choice = Convert.ToInt32(Console.ReadLine());
+        Console.Clear();
+        if (choice == 1)
+        {
+            Console.WriteLine("Enter the value of x in degree");
+            double x = Convert.ToDouble(Console.ReadLine());
+            return ScientificCalculation.ConvertToRadian(x);
+
+        }
+        else if (choice == 2)
+        {
+            Console.WriteLine("Enter the value of x in radian:");
+            return Convert.ToDouble(Console.ReadLine());
+        }
+        else
+        {
+            Console.WriteLine("Invalid choice! Defaulting to radians.");
+
+            Console.WriteLine("Enter the value of x in radian:");
+            return Convert.ToDouble(Console.ReadLine());
+
+        }
+
+    }
+
+}
+
+
+class ArthmeticCalculation
+{
+
     public static void Addition()
     {
-        (double operand1, double operand2) = TakeInput();
+        (double operand1, double operand2) = Input.TakeArthmeticInput();
         Console.WriteLine($"The sum of {operand1} and {operand2} is {operand1 + operand2}");
 
     }
 
     public static void Subtraction()
     {
-        var (operand1, operand2) = TakeInput();
+        var (operand1, operand2) = Input.TakeArthmeticInput();
         Console.WriteLine($"The difference of {operand1} and {operand2} is {operand1 - operand2}");
     }
 
     public static void Multiplication()
     {
-        var (operand1, operand2) = TakeInput();
+        var (operand1, operand2) = Input.TakeArthmeticInput();
         Console.WriteLine($"The product of {operand1} and {operand2} is {operand1 * operand2}");
     }
 
     public static void Division()
     {
-        var (operand1, operand2) = TakeInput();
+        var (operand1, operand2) = Input.TakeArthmeticInput();
         if (operand2 == 0)
         {
             Console.WriteLine("ERROR: Division by zero");
@@ -123,69 +186,11 @@ class SimpleOperation
         }
     }
 
-
-
 }
 
 
-class ScientificCalculation : SimpleOperation
+class ScientificCalculation : ArthmeticCalculation
 {
-
-    public static void ScientificMenu()
-    {
-        Console.WriteLine(@$"1. Trigonometric Functions
-2. Find combination and permutation
-3. Find the solution of Quadratic equation");
-    }
-
-
-
-    public static void DegreeOrRadianMenu()
-    {
-        Console.WriteLine("Do you want x in degree or radian:");
-        Console.WriteLine(@"1. Degree
-2. Radian");
-    }
-
-
-    public static double Takeinput()
-    {
-
-        DegreeOrRadianMenu();
-        int choice = Convert.ToInt32(Console.ReadLine());
-        Console.Clear();
-        if (choice == 1)
-        {
-            Console.WriteLine("Enter the value of x in degree");
-            double x = Convert.ToDouble(Console.ReadLine());
-            return ConvertToRadian(x);
-
-        }
-        else if (choice == 2)
-        {
-            Console.WriteLine("Enter the value of x in radian:");
-            return Convert.ToDouble(Console.ReadLine());
-        }
-        else
-        {
-            Console.WriteLine("Invalid choice! Defaulting to radians.");
-
-            Console.WriteLine("Enter the value of x in radian:");
-            return Convert.ToDouble(Console.ReadLine());
-
-        }
-
-    }
-
-    public static void TrigonometricMenu()
-    {
-        Console.WriteLine("1. sin(x)");
-        Console.WriteLine("2. cos(x)");
-        Console.WriteLine("3. tan(x)");
-        
-    }
-
-
     public static double ConvertToRadian(double degree)
     {
         return (degree * Math.PI / 180);
@@ -196,7 +201,7 @@ class ScientificCalculation : SimpleOperation
     public static void SinFunction()
     {
         Console.WriteLine($"sin(x)");
-        double x = Takeinput();
+        double x = Input.TakeTrigonometricinput();
 
         Console.Clear();
 
@@ -221,11 +226,12 @@ class ScientificCalculation : SimpleOperation
         }
         return sum;
     }
+
     public static void CosFunction()
     {
         Console.WriteLine("cos(x)");
 
-        double x = Takeinput();
+        double x = Input.TakeTrigonometricinput();
 
         double result = CosFunctionLogic(x);
 
@@ -249,7 +255,7 @@ class ScientificCalculation : SimpleOperation
     public static void TanFunction()
     {
         Console.WriteLine("tan(x)");
-        double x = Takeinput();
+        double x = Input.TakeTrigonometricinput();
 
 
         double result = SinFunctionLogic(x) / CosFunctionLogic(x);
@@ -276,10 +282,13 @@ The permutation result is {permutationResult}");
     public static void QuadraticSolve()
     {
         Console.WriteLine("It is in the form ax^2 + bx + c");
+
         Console.Write("Enter the coefficient of a: ");
         double a = Convert.ToDouble(Console.ReadLine());
+
         Console.Write("Enter the coefficient of b: ");
         double b = Convert.ToDouble(Console.ReadLine());
+
         Console.Write("Enter the coefficient of c: ");
         double c = Convert.ToDouble(Console.ReadLine());
 
@@ -319,44 +328,46 @@ class MainProgram
             Console.WriteLine("2. Scientific Calculations");
             Console.WriteLine("3. Exit");
 
+            double userchoice = Input.GetValidInput();
 
-            switch (Console.ReadLine())
+
+            switch (userchoice)
             {
-                case "1":
-                Console.Clear();
-                    SimpleOperation.Menu();
+                case 1:
+                    Console.Clear();
+                    Menu.ArthmeticCalculationMenu();
 
 
                     switch (Console.ReadLine())
                     {
                         case "1":
-                        Console.Clear();
-                            SimpleOperation.Addition();
+                            Console.Clear();
+                            ArthmeticCalculation.Addition();
                             break;
 
                         case "2":
-                        Console.Clear();
-                            SimpleOperation.Subtraction();
+                            Console.Clear();
+                            ArthmeticCalculation.Subtraction();
                             break;
 
                         case "3":
-                        Console.Clear();
-                            SimpleOperation.Multiplication();
+                            Console.Clear();
+                            ArthmeticCalculation.Multiplication();
                             break;
 
                         case "4":
-                        Console.Clear();
-                            SimpleOperation.Division();
+                            Console.Clear();
+                            ArthmeticCalculation.Division();
                             break;
 
                         case "5":
-                        Console.Clear();
-                            SimpleOperation.Power();
+                            Console.Clear();
+                            ArthmeticCalculation.Power();
                             break;
 
                         case "6":
-                        Console.Clear();
-                            SimpleOperation.Factorial();
+                            Console.Clear();
+                            ArthmeticCalculation.Factorial();
                             break;
 
                         case "7":
@@ -373,16 +384,16 @@ class MainProgram
 
                     break;
 
-                case "2":
-                Console.Clear();
+                case 2:
+                    Console.Clear();
 
-                    ScientificCalculation.ScientificMenu();
+                    Menu.ScientificMenu();
                     String? Choice = Console.ReadLine();
 
                     if (Choice == "1")
                     {
                         Console.Clear();
-                        ScientificCalculation.TrigonometricMenu();
+                        Menu.TrigonometricMenu();
 
 
 
@@ -421,17 +432,12 @@ class MainProgram
                         ScientificCalculation.QuadraticSolve();
 
                     }
-
-
                     break;
-
-
-
-                case "3":
+                case 3:
                     return;
 
                 default:
-                Console.Clear();
+                    Console.Clear();
                     Console.WriteLine("Invalid option.");
                     break;
             }
