@@ -10,27 +10,33 @@ class ArthmeticCalculation
 
     public static void Subtraction()
     {
-        var (operand1, operand2) = Input.TakeArthmeticInput();
+        (double operand1, double operand2) = Input.TakeArthmeticInput();
         Console.WriteLine($"The difference of {operand1} and {operand2} is {operand1 - operand2}");
     }
 
     public static void Multiplication()
     {
-        var (operand1, operand2) = Input.TakeArthmeticInput();
+         (double operand1, double operand2) = Input.TakeArthmeticInput();
         Console.WriteLine($"The product of {operand1} and {operand2} is {operand1 * operand2}");
     }
 
     public static void Division()
     {
-        var (operand1, operand2) = Input.TakeArthmeticInput();
-        if (operand2 == 0)
+        (double operand1, double operand2) = Input.TakeArthmeticInput();
+
+        try
         {
-            Console.WriteLine("ERROR: Division by zero");
+            Console.WriteLine($"{operand1} / {operand2} = {(decimal)operand1 / (decimal)operand2}");
         }
-        else
+        catch (DivideByZeroException)
         {
-            Console.WriteLine($"{operand1} / {operand2} = {operand1 / operand2}");
+            Console.WriteLine("Cannot divide by zero.");
         }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"An unexpected error occurred: {ex.Message}");
+        }
+
     }
 
     public static void Factorial()
@@ -38,11 +44,11 @@ class ArthmeticCalculation
         Console.WriteLine("Enter the number to find the factorial");
         double factorialNumber = Convert.ToDouble(Console.ReadLine());
 
-        Console.WriteLine($"{factorialNumber}! = {FactorialRecursion(factorialNumber)}");
+        Console.WriteLine($"{factorialNumber}! = {Factoral(factorialNumber)}");
 
     }
 
-    public static double FactorialRecursion(double number)
+    public static double Factoral(double number)
     {
         if (number == 0)
         {
@@ -50,27 +56,27 @@ class ArthmeticCalculation
         }
         else
         {
-            return number * FactorialRecursion(number - 1);
+            return number * Factoral(number - 1);
         }
     }
 
 
-    public static void Power()
+    public static void CalculatePower()
     {
 
         Console.WriteLine("Enter the base:");
-        double Base = Convert.ToDouble(Console.ReadLine());
+        double radix = Convert.ToDouble(Console.ReadLine());
 
         Console.WriteLine("Enter the power of the number:");
         double power = Convert.ToDouble(Console.ReadLine());
 
-        Console.WriteLine($"{Base} ^ {power} = {PowerRecursion(Base, power)}");
-
+        Console.WriteLine($"{radix} ^ {power} = {ComputePowerRecursive(radix, power)}");
 
     }
 
 
-    public static double PowerRecursion(double baseNumber, double powerNumber)
+
+    public static double ComputePowerRecursive(double baseNumber, double powerNumber)
     {
         if (powerNumber == 0)
         {
@@ -78,7 +84,7 @@ class ArthmeticCalculation
         }
         else
         {
-            return baseNumber * PowerRecursion(baseNumber, powerNumber - 1);
+            return baseNumber * ComputePowerRecursive(baseNumber, powerNumber - 1);
         }
     }
 

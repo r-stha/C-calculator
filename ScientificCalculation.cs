@@ -31,7 +31,7 @@ class ScientificCalculation
 
         for (int n = 0; n < terms; n++)
         {
-            double term = Math.Pow(-1, n) * Math.Pow(x, 2 * n + 1) / ArthmeticCalculation.FactorialRecursion(2 * n + 1);
+            double term = Math.Pow(-1, n) * Math.Pow(x, 2 * n + 1) / ArthmeticCalculation.Factoral(2 * n + 1);
             sum += term;
         }
         return sum;
@@ -56,7 +56,7 @@ class ScientificCalculation
 
         for (int n = 0; n < terms; n++)
         {
-            double term = Math.Pow(-1, n) * Math.Pow(x, 2 * n) / ArthmeticCalculation.FactorialRecursion(2 * n);
+            double term = Math.Pow(-1, n) * Math.Pow(x, 2 * n) / ArthmeticCalculation.Factoral(2 * n);
             sum += term;
         }
         return sum;
@@ -82,8 +82,8 @@ class ScientificCalculation
         Console.WriteLine("Enter the numbers of objects from the collection that can be choosen:");
         double choosenNumber = Convert.ToDouble(Console.ReadLine());
 
-        double combinationResult = ArthmeticCalculation.FactorialRecursion(totalObjects) / (ArthmeticCalculation.FactorialRecursion(choosenNumber) * ArthmeticCalculation.FactorialRecursion(totalObjects - choosenNumber));
-        double permutationResult = combinationResult * ArthmeticCalculation.FactorialRecursion(choosenNumber);
+        double combinationResult = ArthmeticCalculation.Factoral(totalObjects) / (ArthmeticCalculation.Factoral(choosenNumber) * ArthmeticCalculation.Factoral(totalObjects - choosenNumber));
+        double permutationResult = combinationResult * ArthmeticCalculation.Factoral(choosenNumber);
         Console.WriteLine(@$"The combination result is {combinationResult}
 The permutation result is {permutationResult}");
 

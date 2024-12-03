@@ -32,15 +32,13 @@ class MainProgram
 
                     OptionChoose.ScientificOptionChoose(ScientificMenuChoice);
 
-                    
                     break;
 
                 case 3:
                     Menu.NumberSystemMenu();
 
                     double userChoice = Input.GetValidInput();
-
-                    OptionChoose.NumberSystemConversionOptionChoose(userchoice);
+                    OptionChoose.NumberSystemConversionOptionChoose(userChoice);
 
                     break;
 

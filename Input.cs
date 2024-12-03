@@ -60,12 +60,13 @@ class Input
 
     public static int TakeBinaryInput()
     {
-        Console.WriteLine("Enter the value to convert to decimal");
+        Console.WriteLine("Enter the binary value to convert to decimal");
 
         while (true)
         {
             String? binary = Console.ReadLine();
-
+            
+            if(binary is not null){
             foreach (char number in binary)
             {
                 if (number != '0' && number != '1')
@@ -83,7 +84,7 @@ class Input
                 }
 
             }
-
+            }
         }
 
     }

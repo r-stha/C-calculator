@@ -1,7 +1,7 @@
 class NumberSystemConversion
 {
     public static void BinaryToDecimal()
-    {
+    {      
         int binary = Input.TakeBinaryInput();
         int result = BinaryToDecimalLogic(binary);
 
@@ -30,7 +30,7 @@ class NumberSystemConversion
     }
 
     public static void DecimalToBinary()
-    {
+    {   
         int decimalNumber = Input.TakeDecimalInput();
         int result = DecimalToBinaryLogic(decimalNumber);
 

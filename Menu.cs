@@ -12,28 +12,29 @@ class Menu
 
     public static void ArthmeticCalculationMenu()
     {
-        Console.WriteLine(@"1. Addition
-2. Subtraction
-3. Multiplication
-4. Division
-6. Find the Power
-5. Find the Factorial
-7. Exit");
+        Console.WriteLine("1. Addition");
+        Console.WriteLine("2. Subtraction");
+        Console.WriteLine("3. Multiplication");
+        Console.WriteLine("4. Division");
+        Console.WriteLine("5. Find the power");
+        Console.WriteLine("6. Find the factorial");
+        Console.WriteLine("7. Exit");
+
     }
 
     public static void ScientificMenu()
     {
-        Console.WriteLine(@$"1. Trigonometric Functions
-2. Find combination and permutation
-3. Find the solution of Quadratic equation");
+        Console.WriteLine("1. Trigonometric Functions");
+        Console.WriteLine("2. Find combination and permutation");
+        Console.WriteLine("3. Find the solution of Quadratic Equation");
     }
 
 
     public static void DegreeOrRadianMenu()
     {
         Console.WriteLine("Do you want x in degree or radian:");
-        Console.WriteLine(@"1. Degree
-2. Radian");
+        Console.WriteLine("1. Degree");
+        Console.WriteLine("2. Radian");
     }
 
 
@@ -48,8 +49,8 @@ class Menu
     public static void NumberSystemMenu()
     {
         Console.Clear();
-        Console.WriteLine(@"1. Binary to decimal
-2. Decimal to binary");
+        Console.WriteLine("1. Binary to decimal");
+        Console.WriteLine("2. Decimal to binary");
 
     }
 
