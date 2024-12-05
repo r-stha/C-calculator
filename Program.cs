@@ -15,7 +15,7 @@ class MainProgram
                     Menu.ArthmeticCalculationMenu();
 
                     OptionChoose.ArthmeticOptionChoose();
-                         
+
 
                     Console.WriteLine($"Press any key to return to the menu.");
                     Console.ReadKey();
@@ -42,8 +42,18 @@ class MainProgram
 
                     break;
 
-
                 case 4:
+                    Console.Clear();
+                    InfixToPostfix convert = new InfixToPostfix();
+                    EvaluatePostfix Solve = new EvaluatePostfix();
+
+                    string input = Input.TakeArthmetixExpressionInput();
+                    string postfix = convert.ConvertToPostfix(input);
+
+                    Console.WriteLine($"The result of the expression {input} is {Solve.Evaluate(Convert.ToString(postfix))}");
+                    break;
+
+                case 5:
                     return;
 
                 default:

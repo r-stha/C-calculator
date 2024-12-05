@@ -6,7 +6,8 @@ class Menu
         Console.WriteLine("1. Basic Operations");
         Console.WriteLine("2. Scientific Calculations");
         Console.WriteLine("3. Number System Conversion");
-        Console.WriteLine("4. Exit");
+        Console.WriteLine("4. Solve Arthmetic Expression.");
+        Console.WriteLine("5. Exit");
     }
 
 

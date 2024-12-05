@@ -1,4 +1,4 @@
-class Input 
+class Input
 {
     public static double GetValidInput()
     {
@@ -65,25 +65,26 @@ class Input
         while (true)
         {
             String? binary = Console.ReadLine();
-            
-            if(binary is not null){
-            foreach (char number in binary)
+
+            if (binary is not null)
             {
-                if (number != '0' && number != '1')
+                foreach (char number in binary)
                 {
-                    Console.Clear();
-                    Console.WriteLine("ERROR : Not a binary Number");
-                    Console.WriteLine("Enter valid Binary Number:");
+                    if (number != '0' && number != '1')
+                    {
+                        Console.Clear();
+                        Console.WriteLine("ERROR : Not a binary Number");
+                        Console.WriteLine("Enter valid Binary Number:");
 
+
+                    }
+                    else
+                    {
+
+                        return Convert.ToInt32(binary);
+                    }
 
                 }
-                else
-                {
-
-                    return Convert.ToInt32(binary);
-                }
-
-            }
             }
         }
 
@@ -93,6 +94,15 @@ class Input
     {
         Console.WriteLine("Enter the decimal value to convert to binary");
         return Convert.ToInt32(Console.ReadLine());
+    }
+
+    public static string TakeArthmetixExpressionInput()
+    {
+        Console.WriteLine("Enter the Arthimetic Expression to Solve:");
+        string? input = Console.ReadLine();
+        if (input is not null)
+            return input;
+        else return "";
     }
 
 
