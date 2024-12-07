@@ -31,7 +31,7 @@ class OptionChoose
 
             case "6":
                 Console.Clear();
-                ArthmeticCalculation.Factorial();
+                ArthmeticCalculation.ComputeFactorial();
                 break;
 
             case "7":

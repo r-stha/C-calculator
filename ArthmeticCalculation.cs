@@ -39,16 +39,16 @@ class ArthmeticCalculation
 
     }
 
-    public static void Factorial()
+    public static void ComputeFactorial()
     {
         Console.WriteLine("Enter the number to find the factorial");
         double factorialNumber = Convert.ToDouble(Console.ReadLine());
 
-        Console.WriteLine($"{factorialNumber}! = {Factoral(factorialNumber)}");
+        Console.WriteLine($"{factorialNumber}! = {ComputeFactorialRecursive(factorialNumber)}");
 
     }
 
-    public static double Factoral(double number)
+    public static double ComputeFactorialRecursive(double number)
     {
         if (number == 0)
         {
@@ -56,7 +56,7 @@ class ArthmeticCalculation
         }
         else
         {
-            return number * Factoral(number - 1);
+            return number * ComputeFactorialRecursive(number - 1);
         }
     }
 

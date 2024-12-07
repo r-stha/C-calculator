@@ -50,7 +50,7 @@ class MainProgram
                     string input = Input.TakeArthmetixExpressionInput();
                     string postfix = convert.ConvertToPostfix(input);
 
-                    Console.WriteLine($"The result of the expression {input} is {Solve.Evaluate(Convert.ToString(postfix))}");
+                    Console.WriteLine($"The result of the expression {input} is {Solve.Evaluate(postfix)}");
                     break;
 
                 case 5:
