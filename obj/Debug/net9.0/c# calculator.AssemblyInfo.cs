@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("c# calculator")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ef24c2b6f8833b2849ca9f0e858e969bcaac4818")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5e2ecfb567143766482c2e66fb67e45645c4c38a")]
 [assembly: System.Reflection.AssemblyProductAttribute("c# calculator")]
 [assembly: System.Reflection.AssemblyTitleAttribute("c# calculator")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
